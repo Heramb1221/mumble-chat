@@ -216,7 +216,6 @@ export const connectDB = async (retries = 3): Promise<void> => {
 
   if (!uri) {
     console.error("❌ MONGODB_URI is not defined");
-    process.exit(1);
   }
 
   for (let attempt = 0; attempt <= retries; attempt++) {
@@ -275,6 +274,7 @@ export const connectDB = async (retries = 3): Promise<void> => {
                   "❌ Non-SRV fallback connection failed:",
                   fallbackError
                 );
+                throw new Error("MongoDB connection failed");
               }
             }
           }
@@ -286,7 +286,7 @@ export const connectDB = async (retries = 3): Promise<void> => {
        */
       if (attempt === retries) {
         console.error("❌ All MongoDB connection attempts failed");
-        process.exit(1);
+        throw new Error("MongoDB connection failed");
       }
 
       /**

@@ -13,10 +13,6 @@ export const protectRoute = [
         try {
             const { userId: clerkId } = getAuth(req);
 
-            if(!clerkId) {
-                return res.status(401).json({ message: "Unauthorized - invalid token" });
-            }
-
             const user = await User.findOne({ clerkId });
 
             if(!user) {
@@ -27,8 +23,8 @@ export const protectRoute = [
 
             next();
         } catch (error) {
-            console.log("Error in protectRoute middleware");
-            res.status(500).json({ message: "Internal Server Error"})
+            res.status(500);
+            next(error);
         }
-    }
+    },
 ]

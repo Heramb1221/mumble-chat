@@ -29,13 +29,4 @@ app.use("/api/users", userRoutes);
 //error handles must come after routes to catch error by next methods
 app.use(errorHandler);
 
-//serve frontend in prodcution
-if(process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname,"../../web/dist")))
-
-    app.get("/{*any}", (_, res) => {
-        res.sendFile(path.join(__dirname, "../../web/dist/index.html"))
-    })
-}
-
 export default app;

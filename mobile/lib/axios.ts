@@ -3,13 +3,14 @@ import * as Sentry from "@sentry/react-native";
 import { useAuth } from "@clerk/clerk-expo";
 import { useCallback } from "react";
 
-const API_URL = "https://mumble-lyart.vercel.app/api";
+const API_URL = "https://mumble-2in9.onrender.com/api";
 
 // this is the same thing we did with useEffect setup but it's optimized version - it's better!!
 
 const api = axios.create({
   baseURL: API_URL,
   headers: { "Content-Type": "application/json" },
+  withCredentials: true, // 🔥 REQUIRED FOR WEB
 });
 
 // Response interceptor registered once

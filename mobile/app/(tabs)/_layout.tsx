@@ -13,17 +13,21 @@ const TabsLayout = () => {
       screenOptions={{
         headerShown: false,
         tabBarStyle: {
-          backgroundColor: "#0D0D0F",
-          borderTopColor: "#1A1A1D",
+          backgroundColor: "#121417",
+          borderTopColor: "#1C1F24",
           borderTopWidth: 1,
           height: 88,
           paddingTop: 8,
         },
-        tabBarActiveTintColor: "#F4A261",
-        tabBarInactiveTintColor: "#6B6B70",
-        tabBarLabelStyle: { fontSize: 12, fontWeight: "600" },
+        tabBarActiveTintColor: "#4FD1C5",
+        tabBarInactiveTintColor: "#6B7280",
+        tabBarLabelStyle: { 
+          fontSize: 12, 
+          fontWeight: "600",
+        },
       }}
     >
+
       <Tabs.Screen
         name="index"
         options={{

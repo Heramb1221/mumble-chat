@@ -25,33 +25,37 @@ const AuthScreen = () => {
         />
 
         <AnimatedOrb
-          colors={["#F4A261", "#E76F51"]}
+          colors={["#4FD1C5", "#2FA89D"]}
           size={300}
           initialX={-80}
           initialY={height * 0.1}
           duration={4000}
         />
+
         <AnimatedOrb
-          colors={["#E76F51", "#F4A261"]}
+          colors={["#2FA89D", "#4FD1C5"]}
           size={250}
           initialX={width - 100}
           initialY={height * 0.3}
           duration={5000}
         />
+
         <AnimatedOrb
-          colors={["#FFD7BA", "#F4A261"]}
+          colors={["#BFF3EC", "#4FD1C5"]}
           size={200}
           initialX={width * 0.3}
           initialY={height * 0.6}
           duration={3500}
         />
+
         <AnimatedOrb
-          colors={["#F4B183", "#E76F51"]}
+          colors={["#7EE6DC", "#2FA89D"]}
           size={180}
           initialX={-50}
           initialY={height * 0.75}
           duration={4500}
         />
+
 
         <BlurView
           intensity={70}

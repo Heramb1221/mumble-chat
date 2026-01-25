@@ -1,9 +1,9 @@
 import { UserButton } from "@clerk/clerk-react";
 import { useEffect, useRef, useState } from "react";
-import { Link, useSearchParams } from "react-router";
+import { Link, useSearchParams } from "react-router-dom";
 import { useSocketStore } from "../lib/socket";
 import { useSocketConnection } from "../hooks/useSocketConnection";
-import { SparklesIcon, MessageSquareIcon, PlusIcon } from "lucide-react";
+import { MessageSquareIcon, PlusIcon, MessageCircleMoreIcon } from "lucide-react";
 
 import { useChats, useGetOrCreateChat } from "../hooks/useChats";
 import { useMessages } from "../hooks/useMessages";
@@ -23,7 +23,7 @@ function ChatPage() {
   const [messageInput, setMessageInput] = useState("");
   const [isNewChatModalOpen, setIsNewChatModalOpen] = useState(false);
 
-  const messagesEndRef = useRef<HTMLDivElement | null>(null);
+  const messagesEndRef = useRef(null);
   const typingTimeoutRef = useRef(null);
 
   const { socket, setTyping, sendMessage } = useSocketStore();
@@ -76,8 +76,8 @@ function ChatPage() {
         <div className="p-4 border-b border-white/10">
           <div className="flex items-center justify-between mb-4">
             <Link to="/chat" className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#4FD1C5] to-[#2FA89D] flex items-center justify-center">
-                <SparklesIcon className="w-4 h-4 text-[#0B0D10]" />
+              <div className="w-8 h-8 rounded-lg bg-linear-to-br from-[#4FD1C5] to-[#2FA89D] flex items-center justify-center">
+                <MessageCircleMoreIcon className="w-4 h-4 text-[#0B0D10]" />
               </div>
               <span className="font-bold">Whisper</span>
             </Link>
@@ -87,7 +87,7 @@ function ChatPage() {
           <button
             onClick={() => setIsNewChatModalOpen(true)}
             className="w-full flex items-center justify-center gap-2 py-2.5
-              rounded-xl bg-gradient-to-r from-[#4FD1C5] to-[#2FA89D]
+              rounded-xl bg-linear-to-r from-[#4FD1C5] to-[#2FA89D]
               text-[#0B0D10] font-semibold hover:opacity-90 transition"
           >
             <PlusIcon className="w-4 h-4" />
@@ -201,7 +201,7 @@ function NoChatSelectedUI() {
   return (
     <div className="flex-1 flex flex-col items-center justify-center text-center px-8">
       <div className="w-20 h-20 rounded-3xl
-        bg-gradient-to-br from-[#4FD1C5]/20 to-[#2FA89D]/20
+        bg-linear-to-br from-[#4FD1C5]/20 to-[#2FA89D]/20
         flex items-center justify-center mb-6">
         <MessageSquareIcon className="w-10 h-10 text-[#7EE6DC]" />
       </div>

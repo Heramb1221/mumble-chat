@@ -9,7 +9,7 @@ function HomePage() {
         {/* NAVBAR */}
         <nav className="flex items-center justify-between relative z-10">
           <div className="flex items-center gap-2.5">
-            <div className="size-9 rounded-xl bg-gradient-to-br from-[#4FD1C5] to-[#2FA89D]
+            <div className="size-9 rounded-xl bg-linear-to-br from-[#4FD1C5] to-[#2FA89D]
               flex items-center justify-center shadow-lg shadow-[#4FD1C5]/20">
               <MessageCircleMore className="size-5 text-[#0B0D10]" />
             </div>
@@ -24,7 +24,7 @@ function HomePage() {
             </SignInButton>
 
             <SignUpButton mode="modal">
-              <button className="btn gap-2 bg-gradient-to-r from-[#4FD1C5] to-[#2FA89D]
+              <button className="btn gap-2 bg-linear-to-r from-[#4FD1C5] to-[#2FA89D]
                 text-sm font-semibold rounded-full hover:opacity-90
                 shadow-lg shadow-[#4FD1C5]/25 border-none text-[#0B0D10]">
                 Get Started
@@ -50,7 +50,7 @@ function HomePage() {
           <h1 className="text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.05] tracking-tight font-mono">
             Messaging for
             <br />
-            <span className="bg-gradient-to-r from-[#7EE6DC] via-[#4FD1C5] to-[#2FA89D]
+            <span className="bg-linear-to-r from-[#7EE6DC] via-[#4FD1C5] to-[#2FA89D]
               bg-clip-text text-transparent">
               everyone
             </span>
@@ -144,15 +144,15 @@ function HomePage() {
         {/* Glow */}
         <div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
-            w-[500px] h-[500px]
-            bg-gradient-to-r from-[#4FD1C5]/20 to-[#2FA89D]/20
+            w-125 h-125
+            bg-linear-to-r from-[#4FD1C5]/20 to-[#2FA89D]/20
             rounded-full blur-[120px]"
         />
 
         {/* Card */}
         <div className="relative z-10">
           <div className="absolute -inset-px rounded-3xl
-            bg-gradient-to-b from-white/15 to-white/5 p-px">
+            bg-linear-to-b from-white/15 to-white/5 p-px">
             <div className="w-full h-full rounded-3xl bg-[#1A1D22]" />
           </div>
 
@@ -177,9 +177,9 @@ function HomePage() {
               <div className="flex items-center gap-2">
                 <div className="flex -space-x-2">
                   <div className="w-6 h-6 rounded-full
-                    bg-gradient-to-br from-[#7EE6DC] to-[#4FD1C5]" />
+                    bg-linear-to-br from-[#7EE6DC] to-[#4FD1C5]" />
                   <div className="w-6 h-6 rounded-full
-                    bg-gradient-to-br from-[#4FD1C5] to-[#2FA89D]" />
+                    bg-linear-to-br from-[#4FD1C5] to-[#2FA89D]" />
                 </div>
                 <span className="text-sm text-white/80">typing...</span>
               </div>

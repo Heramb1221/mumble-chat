@@ -28,7 +28,7 @@ export function ChatInput({ value, onChange, onSubmit, disabled }) {
           disabled={disabled}
           className="
             rounded-xl px-4 py-3
-            bg-gradient-to-r from-[#4FD1C5] to-[#2FA89D]
+            bg-linear-to-r from-[#4FD1C5] to-[#2FA89D]
             text-[#0B0D10]
             hover:opacity-90
             transition

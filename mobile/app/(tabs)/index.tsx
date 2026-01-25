@@ -1,33 +1,36 @@
-import { Text, ActivityIndicator, View, Pressable, FlatList } from 'react-native'
-import React from 'react'
-import { useRouter } from 'expo-router'
-import { useChats } from '@/hooks/useChats';
-import { Ionicons } from '@expo/vector-icons';
-import ChatItem from '@/components/ChatItem';
-import EmptyUI from '@/components/EmptyUI';
-import { Chat } from '@/types';
+import { Text, ActivityIndicator, View, Pressable, FlatList } from "react-native";
+import React from "react";
+import { useRouter } from "expo-router";
+import { useChats } from "@/hooks/useChats";
+import { Ionicons } from "@expo/vector-icons";
+import ChatItem from "@/components/ChatItem";
+import EmptyUI from "@/components/EmptyUI";
+import { Chat } from "@/types";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const ChatsTab = () => {
-
   const router = useRouter();
   const { data: chats, isLoading, error, refetch } = useChats();
 
-  if(isLoading) {
+  if (isLoading) {
     return (
-      <View className='flex-1 bg-surface items-center justify-center'>
-        <ActivityIndicator size={"large"} color={"#4FD1C5"} />
-      </View>
-    )
+      <SafeAreaView className="flex-1 bg-surface items-center justify-center">
+        <ActivityIndicator size="large" color="#4FD1C5" />
+      </SafeAreaView>
+    );
   }
 
-  if(error) {
+  if (error) {
     return (
-      <View className="flex-1 bg-surface items-center justify-center">
+      <SafeAreaView className="flex-1 bg-surface items-center justify-center">
         <Text className="text-red-500 text-3xl">Failed to load chats</Text>
-        <Pressable onPress={() => refetch()} className="mt-4 px-4 py-2 bg-primary rounded-lg">
+        <Pressable
+          onPress={() => refetch()}
+          className="mt-4 px-4 py-2 bg-primary rounded-lg"
+        >
           <Text className="text-foreground">Retry</Text>
         </Pressable>
-      </View>
+      </SafeAreaView>
     );
   }
 
@@ -39,35 +42,43 @@ const ChatsTab = () => {
         participantId: chat.participant._id,
         name: chat.participant.name,
         avatar: chat.participant.avatar,
-      }
-    })
-  }
+      },
+    });
+  };
 
   return (
-    <View className='flex-1 bg-surface'>
-      <FlatList 
+    <SafeAreaView className="flex-1 bg-surface" edges={["top"]}>
+      <FlatList
         data={chats}
-        keyExtractor={item => item._id}
-        renderItem={({item}) => <ChatItem chat={item} onPress={() => handleChatPress(item)} />}
+        keyExtractor={(item) => item._id}
+        renderItem={({ item }) => (
+          <ChatItem chat={item} onPress={() => handleChatPress(item)} />
+        )}
         showsVerticalScrollIndicator={false}
-        contentInsetAdjustmentBehavior='automatic'
-        contentContainerStyle={{paddingHorizontal:20, paddingTop:16, paddingBottom: 24}}
+        contentInsetAdjustmentBehavior="automatic"
+        contentContainerStyle={{
+          paddingHorizontal: 20,
+          paddingTop: 16,
+          paddingBottom: 24,
+        }}
         ListHeaderComponent={<Header />}
-        ListEmptyComponent={<EmptyUI 
-          title='No chats yet'
-          subtitle='Start a conversation!'
-          iconName='chatbubbles-outline'
-          iconColor='#6B7280'
-          iconSize={64}
-          buttonLabel='New Chat'
-          onPressButton={() => router.push("/new-chat")}
-        />}
+        ListEmptyComponent={
+          <EmptyUI
+            title="No chats yet"
+            subtitle="Start a conversation!"
+            iconName="chatbubbles-outline"
+            iconColor="#6B7280"
+            iconSize={64}
+            buttonLabel="New Chat"
+            onPressButton={() => router.push("/new-chat")}
+          />
+        }
       />
-    </View>
-  )
-}
+    </SafeAreaView>
+  );
+};
 
-export default ChatsTab
+export default ChatsTab;
 
 function Header() {
   const router = useRouter();

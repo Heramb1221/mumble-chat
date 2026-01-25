@@ -15,6 +15,7 @@ const app = express();
 const allowedOrigins = [
   "http://localhost:8081", // expo mobile
   "http://localhost:5173", // vite web devs
+  "https://mumble-xi.vercel.app/",
   process.env.FRONTEND_URL!, // production
 ].filter(Boolean);
 

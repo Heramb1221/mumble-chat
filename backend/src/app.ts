@@ -23,6 +23,8 @@ app.use(
     origin: [
       "http://localhost:8081",
       "https://your-web-domain.com",
+      "http://localhost:5173",
+      process.env.FRONTEND_URL!,
     ],
     credentials: true,
   })

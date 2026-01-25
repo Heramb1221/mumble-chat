@@ -12,7 +12,7 @@ import { ChatHeader } from "../components/ChatHeader";
 import { MessageBubble } from "../components/MessageBubble";
 import { ChatInput } from "../components/ChatInput";
 import { useCurrentUser } from "../hooks/useCurrentUser";
-import { NewChatModal } from "../components/NewChatModal";
+import { NewChatModal } from "../components/NewChatModel";
 
 function ChatPage() {
   const { data: currentUser } = useCurrentUser();

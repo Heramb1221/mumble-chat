@@ -18,14 +18,16 @@ const allowedOrigins = [
   process.env.FRONTEND_URL!, // production
 ].filter(Boolean);
 
+app.use(express.json());
+
 app.use(
   cors({
     origin: allowedOrigins,
-    credentials: true, // allow credentials from client (cookies, authorization headers, etc.)
+    credentials: true,
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
-app.use(express.json());
 app.use(clerkMiddleware());
 
 app.get("/health", (req, res) => {

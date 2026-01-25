@@ -24,6 +24,7 @@ export async function getMe(req: AuthRequest, res: Response, next: NextFunction)
 export async function authCallback(req: Request, res: Response, next: NextFunction) {
   try {
     const { userId: clerkId } = getAuth(req);
+    console.log("Clerk ID from getAuth:", clerkId);
 
     if (!clerkId) {
       res.status(401).json({ message: "Unauthorized" });
@@ -45,6 +46,8 @@ export async function authCallback(req: Request, res: Response, next: NextFuncti
         avatar: clerkUser.imageUrl,
       });
     }
+
+    console.log("AUTH CALLBACK HIT");
 
     res.json(user);
   } catch (error) {

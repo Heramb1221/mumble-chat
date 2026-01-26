@@ -160,7 +160,7 @@ export default function ContactUsModal({ visible, onClose }: ContactUsModalProps
                   <View className="flex-row items-center">
                     <Ionicons name="mail-outline" size={16} color="#4FD1C5" />
                     <Text className="text-muted-foreground text-sm ml-2">
-                      support@whisper.com
+                      support@mumble.com
                     </Text>
                   </View>
                   <View className="flex-row items-center">

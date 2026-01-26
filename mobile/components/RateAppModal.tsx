@@ -108,7 +108,7 @@ export default function RateAppModal({ visible, onClose }: RateAppModalProps) {
         <View className="bg-surface-dark rounded-3xl p-6 w-full max-w-md">
           {/* Header */}
           <View className="flex-row items-center justify-between mb-6">
-            <Text className="text-foreground text-xl font-bold">Rate Whisper</Text>
+            <Text className="text-foreground text-xl font-bold">Rate Mumble</Text>
             <Pressable
               onPress={onClose}
               className="w-8 h-8 rounded-full bg-surface-card items-center justify-center"
@@ -188,7 +188,7 @@ export default function RateAppModal({ visible, onClose }: RateAppModalProps) {
 
           {/* Privacy Note */}
           <Text className="text-subtle-foreground text-xs text-center mt-4">
-            Your feedback helps us improve Whisper
+            Your feedback helps us improve Mumble
           </Text>
         </View>
       </View>

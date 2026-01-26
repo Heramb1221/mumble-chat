@@ -1,19 +1,49 @@
-import type { Response, Request, NextFunction } from "express";
+import type { Response, NextFunction } from "express";
 import type { AuthRequest } from "../middleware/auth.js";
 import { User } from "../models/User.js";
 
+export async function getUsers(req: AuthRequest, res: Response, next: NextFunction) {
+  try {
+    const userId = req.userId;
 
-export async function getUsers(req:AuthRequest, res: Response, next: NextFunction) {
+    const users = await User.find({ _id: { $ne: userId } })
+      .select("name email avatar")
+      .limit(50);
 
-    try {
-        const userId = req.userId;
+    res.json(users);
+  } catch (error) {
+    res.status(500);
+    next(error);
+  }
+}
 
-        const users = await User.find({_id: {$ne:userId}}).select("name email avatar").limit(50);
+export async function updateProfile(req: AuthRequest, res: Response, next: NextFunction) {
+  try {
+    const userId = req.userId;
+    const { name, avatar } = req.body;
 
-        res.json(users);
-    } catch (error) {
-        res.status(500);
-        next(error);
+    if (!name || !name.trim()) {
+      res.status(400).json({ message: "Name is required" });
+      return;
     }
 
+    const user = await User.findByIdAndUpdate(
+      userId,
+      {
+        name: name.trim(),
+        ...(avatar && { avatar }),
+      },
+      { new: true, runValidators: true }
+    ).select("name email avatar");
+
+    if (!user) {
+      res.status(404).json({ message: "User not found" });
+      return;
+    }
+
+    res.json(user);
+  } catch (error) {
+    res.status(500);
+    next(error);
+  }
 }

@@ -3,13 +3,27 @@ import { View, Text, ScrollView, Pressable } from "react-native";
 import { Image } from "expo-image";
 import { Ionicons } from "@expo/vector-icons";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { useState } from "react";
+import EditProfileModal from "@/components/EditProfileModal";
+import ContactUsModal from "@/components/ContactUsModal";
+import RateAppModal from "@/components/RateAppModal";
 
 const MENU_SECTIONS = [
   {
     title: "Account",
     items: [
-      { icon: "person-outline", label: "Edit Profile", color: "#4FD1C5" },
-      { icon: "shield-checkmark-outline", label: "Privacy & Security", color: "#2FA89D" },
+      { 
+        id: "edit-profile",
+        icon: "person-outline", 
+        label: "Edit Profile", 
+        color: "#4FD1C5",
+        action: "edit-profile"
+      },
+      { 
+        icon: "shield-checkmark-outline", 
+        label: "Privacy & Security", 
+        color: "#2FA89D" 
+      },
       {
         icon: "notifications-outline",
         label: "Notifications",
@@ -30,8 +44,20 @@ const MENU_SECTIONS = [
     title: "Support",
     items: [
       { icon: "help-circle-outline", label: "Help Center", color: "#A0A0A5" },
-      { icon: "chatbubble-outline", label: "Contact Us", color: "#4FD1C5" },
-      { icon: "star-outline", label: "Rate the App", color: "#7EE6DC" },
+      { 
+        id: "contact-us",
+        icon: "chatbubble-outline", 
+        label: "Contact Us", 
+        color: "#4FD1C5",
+        action: "contact-us"
+      },
+      { 
+        id: "rate-app",
+        icon: "star-outline", 
+        label: "Rate the App", 
+        color: "#7EE6DC",
+        action: "rate-app"
+      },
     ],
   },
 ];
@@ -39,6 +65,19 @@ const MENU_SECTIONS = [
 const ProfileTab = () => {
   const { signOut } = useAuth();
   const { user } = useUser();
+  const [editProfileVisible, setEditProfileVisible] = useState(false);
+  const [contactUsVisible, setContactUsVisible] = useState(false);
+  const [rateAppVisible, setRateAppVisible] = useState(false);
+
+  const handleMenuItemPress = (item: any) => {
+    if (item.action === "edit-profile") {
+      setEditProfileVisible(true);
+    } else if (item.action === "contact-us") {
+      setContactUsVisible(true);
+    } else if (item.action === "rate-app") {
+      setRateAppVisible(true);
+    }
+  };
 
   return (
     <SafeAreaView className="flex-1 bg-surface-dark" edges={["top"]}>
@@ -57,7 +96,10 @@ const ProfileTab = () => {
             </View>
 
             {/* Avatar edit */}
-            <Pressable className="absolute bottom-1 right-1 w-8 h-8 bg-primary rounded-full items-center justify-center border-2 border-surface-dark">
+            <Pressable 
+              onPress={() => setEditProfileVisible(true)}
+              className="absolute bottom-1 right-1 w-8 h-8 bg-primary rounded-full items-center justify-center border-2 border-surface-dark"
+            >
               <Ionicons name="camera" size={16} color="#0B0D10" />
             </Pressable>
           </View>
@@ -89,6 +131,7 @@ const ProfileTab = () => {
               {section.items.map((item, index) => (
                 <Pressable
                   key={item.label}
+                  onPress={() => handleMenuItemPress(item)}
                   className={`flex-row items-center px-4 py-3.5 active:bg-surface-light ${
                     index < section.items.length - 1
                       ? "border-b border-surface-light"
@@ -134,6 +177,20 @@ const ProfileTab = () => {
           </View>
         </Pressable>
       </ScrollView>
+
+      {/* Modals */}
+      <EditProfileModal 
+        visible={editProfileVisible} 
+        onClose={() => setEditProfileVisible(false)} 
+      />
+      <ContactUsModal 
+        visible={contactUsVisible} 
+        onClose={() => setContactUsVisible(false)} 
+      />
+      <RateAppModal 
+        visible={rateAppVisible} 
+        onClose={() => setRateAppVisible(false)} 
+      />
     </SafeAreaView>
   );
 };

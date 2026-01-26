@@ -9,22 +9,18 @@ import * as Sentry from '@sentry/react-native';
 import SocketConnection from "@/components/SocketConnection";
 
 Sentry.init({
-  dsn: 'https://efd20e60483d7f7af2c5436b0a3202bf@o4510764612255744.ingest.de.sentry.io/4510764613632080',
+  dsn: process.env.EXPO_PUBLIC_SENTRY_DSN,
+  enabled: !__DEV__,
 
-  // Adds more context data to events (IP address, cookies, user, etc.)
-  // For more information, visit: https://docs.sentry.io/platforms/react-native/data-management/data-collected/
-  sendDefaultPii: true,
+  sendDefaultPii: !__DEV__,
+  enableLogs: !__DEV__,
 
-  // Enable Logs
-  enableLogs: true,
-
-  // Configure Session Replay
   replaysSessionSampleRate: 0.1,
   replaysOnErrorSampleRate: 1,
-  integrations: [Sentry.mobileReplayIntegration()],
 
-  // uncomment the line below to enable Spotlight (https://spotlightjs.com)
-  // spotlight: __DEV__,
+  integrations: __DEV__
+    ? []
+    : [Sentry.mobileReplayIntegration()],
 });
 
 const queryClient = new QueryClient();

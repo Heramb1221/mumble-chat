@@ -1,0 +1,22 @@
+{
+  "build": {
+    "production": {
+      "distribution": "store",
+      "env": {
+        "EXPO_PUBLIC_SENTRY_DSN": "@EXPO_PUBLIC_SENTRY_DSN",
+        "EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY": "@EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY",
+        "SENTRY_AUTH_TOKEN": "@SENTRY_AUTH_TOKEN"
+      }
+    },
+    "preview": {
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk"
+      },
+      "env": {
+        "EXPO_PUBLIC_SENTRY_DSN": "@EXPO_PUBLIC_SENTRY_DSN",
+        "EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY": "@EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY"
+      }
+    }
+  }
+}

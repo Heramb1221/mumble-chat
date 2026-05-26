@@ -531,12 +531,10 @@ All endpoints require `Authorization: Bearer <clerk_jwt>` unless noted.
 
 | View | Description |
 |---|---|
-|  | Landing page with auth buttons |
-|  | Web chat interface with sidebar |
-|  | Mobile OAuth screen with animated background |
-|  | Mobile chat list with online indicators |
-|  | Mobile chat detail with typing indicator |
-|  | Mobile profile and settings |
+| <img width="1914" height="867" alt="Screenshot 2026-05-26 212051 - Copy (2)" src="https://github.com/user-attachments/assets/0f87c67a-6f89-40ff-aec5-ef3bf11a54f0" /> | Landing page with auth buttons |
+| <img width="1918" height="858" alt="image" src="https://github.com/user-attachments/assets/c4294ae8-eece-4d42-9334-2116e38e9f35" /> | Web chat interface with sidebar |
+| <img width="356" height="738" alt="image" src="https://github.com/user-attachments/assets/c4fec999-9b8d-41ab-bb01-45d68be70f49" /> | Mobile OAuth screen with animated background |
+| <img width="367" height="737" alt="image" src="https://github.com/user-attachments/assets/26f7e767-2f52-4f23-90c2-aedf9385704c" /> | Mobile chat |
 
 ---
 

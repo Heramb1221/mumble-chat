@@ -20,8 +20,8 @@
 
 | Platform | Link |
 |---|---|
-| Web App | [mumble-xi.vercel.app](https://mumble-xi.vercel.app/) |
-| Backend API | `https://mumble-2in9.onrender.com/api` |
+| Web App | [Live](https://mumble-xi.vercel.app/) |
+| Backend API | [Backend](https://mumble-2in9.onrender.com/api) |
 
 > **Note:** The backend runs on Render's free tier and may take 30–60 seconds to respond
 > after a period of inactivity (cold start). This is a known infrastructure limitation

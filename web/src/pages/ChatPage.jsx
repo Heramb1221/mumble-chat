@@ -79,7 +79,7 @@ function ChatPage() {
               <div className="w-8 h-8 rounded-lg bg-linear-to-br from-[#4FD1C5] to-[#2FA89D] flex items-center justify-center">
                 <MessageCircleMoreIcon className="w-4 h-4 text-[#0B0D10]" />
               </div>
-              <span className="font-bold">Whisper</span>
+              <span className="font-bold">Mumble</span>
             </Link>
             <UserButton />
           </div>
@@ -205,7 +205,7 @@ function NoChatSelectedUI() {
         flex items-center justify-center mb-6">
         <MessageSquareIcon className="w-10 h-10 text-[#7EE6DC]" />
       </div>
-      <h2 className="text-2xl font-bold mb-2">Welcome to Whisper</h2>
+      <h2 className="text-2xl font-bold mb-2">Welcome to Mumble</h2>
       <p className="text-white/70 max-w-sm">
         Select a conversation from the sidebar or start a new chat to begin messaging
       </p>
